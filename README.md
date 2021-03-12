@@ -3,6 +3,8 @@
 # Tsundoku
 Tsundoku is a social platform for book lovers.
 
+![db](doc/db.png)
+
 # Installation
 ## Prerequisites
 - [Ruby](https://rvm.io/)
