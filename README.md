@@ -3,6 +3,10 @@
 # Tsundoku
 Tsundoku is a social platform for book lovers.
 
+# Preview
+![preview](doc/preview.gif)
+
+# Database schema
 ![db](doc/db.png)
 
 # Installation
