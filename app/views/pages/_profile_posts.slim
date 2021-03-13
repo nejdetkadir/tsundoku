@@ -8,19 +8,13 @@
     #myTabContent.tab-content
       #home.tab-pane.fade.show.active(role='tabpanel' aria-labelledby='home-tab')
         .row.mt-2
-          .col-md-4.mt-2
-            .card
-              img.card-img-top(src='https://via.placeholder.com/300' alt='...')
-              .card-footer.text-center
-                a.btn.btn-primary.btn-sm(href='#') Go somewhere
-          .col-md-4.mt-2
-            .card
-              img.card-img-top(src='https://via.placeholder.com/300' alt='...')
-              .card-footer.text-center
-                a.btn.btn-primary.btn-sm(href='#') Go somewhere
-          .col-md-4.mt-2
-            .card
-              img.card-img-top(src='https://via.placeholder.com/300' alt='...')
-              .card-footer.text-center
-                a.btn.btn-primary.btn-sm(href='#') Go somewhere
+          - user.books.each do |book|
+            .col-md-4.mt-2
+              .card
+                = image_tag(book.media.variant(:resize => "300x300", :quality => 90), :crop => :fill, class: "card-img-top", alt: book.name.to_s)
+                .card-footer.d-flex.justify-content-around
+                  = link_to "Show", book_path(book), class: "btn btn-primary btn-sm"
+                  - if book.user == current_user
+                    = link_to "Edit", edit_book_path(book), class: "btn btn-warning btn-sm"
+                    = link_to "Delete", book_path(book), class: "btn btn-danger btn-sm", data: {:confirm => 'Are you sure?'}, method: :delete
       #profile.tab-pane.fade(role='tabpanel' aria-labelledby='profile-tab') ...
