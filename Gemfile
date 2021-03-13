@@ -30,6 +30,7 @@ gem 'devise'
 
 gem 'slim'
 gem 'active_link_to'
+gem 'simple_form'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false

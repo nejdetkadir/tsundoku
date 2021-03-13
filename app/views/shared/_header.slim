@@ -8,6 +8,9 @@ header
         ul.navbar-nav.me-auto.mb-2.mb-md-0
           li.nav-item
             = active_link_to "Home", root_path, class: "nav-link", active: :exact
+          - if user_signed_in?
+            li.nav-item
+            = link_to "Logout", destroy_user_session_path, class: "nav-link", data: {:confirm => 'Are you sure?'}, method: :delete
           li.nav-item.dropdown
             a#loginOrRegister.nav-link.dropdown-toggle(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false') Login/Register
             ul.dropdown-menu(aria-labelledby='loginOrRegister')

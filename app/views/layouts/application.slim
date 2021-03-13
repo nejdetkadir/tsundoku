@@ -11,9 +11,6 @@ html.h-100
     = render 'shared/header'
     main.flex-shrink-0
       .container
-        p.notice
-          = notice
-        p.alert
-          = alert
+        = render 'shared/devalerts'
         = yield
     = render 'shared/footer'

@@ -1,20 +1,22 @@
-h2 Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :email
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      em
-        | (
-        = @minimum_password_length
-        |  characters minimum)
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .actions
-    = f.submit "Sign up"
-= render "devise/shared/links"
+.row
+  .col-md-6.mx-auto
+    h1.text-center Register to TSUNDOKU
+    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      = render "devise/shared/error_messages", resource: resource
+      .form-group.mb-3
+        = f.label :fullname
+        = f.text_field :fullname, autofocus: true, class: "form-control form-control-sm"
+      .form-group.mb-3
+        = f.label :username
+        = f.text_field :username, class: "form-control form-control-sm"
+      .form-group.mb-3
+        = f.label :email
+        = f.email_field :email, autocomplete: "email", class: "form-control form-control-sm"
+      .form-group.mb-3
+        = f.label :password
+        = f.password_field :password, autocomplete: "current-password", class: "form-control form-control-sm"
+      .form-group.mb-3
+        = f.label :password_confirmation
+        = f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control form-control-sm"
+      = f.submit "Sign up", class: "btn btn-success btn-sm mb-3"
+    = render "devise/shared/links"

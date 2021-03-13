@@ -1,0 +1,14 @@
+.row
+  .col-md-6.mx-auto
+    h1.text-center Change your password
+    = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+      = render "devise/shared/error_messages", resource: resource
+      = f.hidden_field :reset_password_token
+      .form-group.mb-3
+        = f.label :password, "New password"
+        = f.password_field :password, autofocus: true, autocomplete: "new-password", class: "form-control form-control-sm"
+      .form-group.mb-3
+        = f.label :password_confirmation, "Confirm new password"
+        = f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control form-control-sm"
+      = f.submit "Change my password", class: "btn btn-success btn-sm mb-3" 
+    = render "devise/shared/links"  
