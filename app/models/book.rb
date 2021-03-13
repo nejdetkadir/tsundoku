@@ -1,6 +1,7 @@
 class Book < ApplicationRecord
   has_one_attached :media
   belongs_to :user
+  has_many :book_comments
 
   validates :name, presence: true, length: {maximum: 70}
   validates :author, presence: true, length: {minimum: 3, maximum: 60}
