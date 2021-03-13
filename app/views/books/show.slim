@@ -1,0 +1,58 @@
+.row.mb-5.mt-5
+	.col-md-10.mx-auto
+    .row
+      .col-md-7
+        = image_tag(@book.media.variant(:resize => "1080", :quality => 85), :crop => :fill, class: "img-fluid", alt: @book.name.to_s)
+      .col-md-5
+        .d-flex.mb-4
+          = image_tag(@book.media.variant(:resize => "100x100", :quality => 90), :crop => :fill, class: "img-fluid", alt: @book.user.fullname.to_s)
+          .d-block.align-self-center.ms-2
+            h5 #{@book.user.fullname}
+            b @#{@book.user.username}
+        p #{@book.comment}
+        - if @book.user == current_user
+          hr
+          .d-flex.justify-content-evenly.mt-3
+            = link_to "Edit", edit_book_path(@book), class: "btn btn-primary btn-sm"
+            = link_to "Delete", book_path(@book), class: "btn btn-danger btn-sm", data: {:confirm => 'Are you sure?'}, method: :delete
+      .col-md-12
+        hr
+        h1.text-center.m-2 Comments
+        .input-group.mb-3
+          input.form-control(type='text' placeholder='Leave a comment' aria-label="Recipient's username" aria-describedby='button-addon2')
+          button#button-addon2.btn.btn-outline-secondary(type='button') Button
+        ul.list-group
+          li.list-group-item
+            .row
+              .col-md-2
+                img.img-fluid(src='https://via.placeholder.com/70x70' alt='')
+              .col-md-10
+                .d-block
+                  h4 Nejdet Kadir Bektaş
+                  small @nejdetkadirr
+              .col-md-12
+                p.text-muted
+                  | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio aperiam eaque animi nulla ullam qui nesciunt deserunt est facilis, laudantium obcaecati odio laborum aspernatur sequi delectus porro tempore vitae atque.
+          li.list-group-item
+          li.list-group-item
+            .row
+              .col-md-2
+                img.img-fluid(src='https://via.placeholder.com/70x70' alt='')
+              .col-md-10
+                .d-block
+                  h4 Nejdet Kadir Bektaş
+                  small @nejdetkadirr
+              .col-md-12
+                p.text-muted
+                  | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio aperiam eaque animi nulla ullam qui nesciunt deserunt est facilis, laudantium obcaecati odio laborum aspernatur sequi delectus porro tempore vitae atque.
+          li.list-group-item
+            .row
+              .col-md-2
+                img.img-fluid(src='https://via.placeholder.com/70x70' alt='')
+              .col-md-10
+                .d-block
+                  h4 Nejdet Kadir Bektaş
+                  small @nejdetkadirr
+              .col-md-12
+                p.text-muted
+                  | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio aperiam eaque animi nulla ullam qui nesciunt deserunt est facilis, laudantium obcaecati odio laborum aspernatur sequi delectus porro tempore vitae atque.

@@ -1,0 +1,32 @@
+hr
+.row
+  .col-md-12
+    form.row.g-3
+    h4.text-center.mt-3 #{book.new_record? ? "Share a book" : "Edit a   book"}
+    = form_with(model: book) do |f|
+      = render "devise/shared/error_messages", resource: book
+      .form-group.mb-3
+        = f.label :name
+        = f.text_field :name, autofocus: true, class: "form-control form-control-sm"
+      .form-group.mb-3
+        = f.label :author
+        = f.text_field :author, class: "form-control form-control-sm"
+      - if !book.new_record?
+        .form-group.mb-3
+          = image_tag(book.media.variant(:resize => "150", :quality => 90), :crop => :fill)
+      .form-group.mb-3
+        = f.label "Media (Cover of book)"
+        = f.file_field :media, class: "form-control form-control-sm"
+      .form-group.mb-3
+        .row
+          .col
+            = f.label :editional
+            = f.number_field :editional, class: "form-control form-control-sm"
+          .col
+            = f.label "Your rating (min: 1 & max: 100)"
+            = f.number_field :rating, class: "form-control form-control-sm"
+      .form-group.mb-3
+        = f.label :comment
+        = f.text_area :comment, class: "form-control form-control-sm", rows: 4
+      = f.submit book.new_record? ? "Share a book" : "Edit a book", class: "btn btn-success btn-sm mb-3"
+

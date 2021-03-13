@@ -11,6 +11,8 @@ header
           - if user_signed_in?
             li.nav-item
               = active_link_to "Profile", pages_profile_path, class: "nav-link"
+            li.nav-item 
+              = active_link_to "Share a book", new_book_path, class: "nav-link"
             li.nav-item
               = link_to "Logout", destroy_user_session_path, class: "nav-link", data: {:confirm => 'Are you sure?'}, method: :delete
           li.nav-item.dropdown

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :books
+  resources :books, except: [:index]
   root to: 'pages#welcome'
   devise_for :users
 
