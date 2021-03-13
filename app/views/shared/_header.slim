@@ -1,0 +1,17 @@
+header
+  nav.navbar.navbar-expand-md.navbar-dark.fixed-top.bg-dark
+    .container-fluid
+      = link_to  "TSUNDOKU", root_path, class: "navbar-brand"
+      button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarCollapse' aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      #navbarCollapse.collapse.navbar-collapse
+        ul.navbar-nav.me-auto.mb-2.mb-md-0
+          li.nav-item
+            = active_link_to "Home", root_path, class: "nav-link", active: :exact
+          li.nav-item.dropdown
+            a#loginOrRegister.nav-link.dropdown-toggle(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false') Login/Register
+            ul.dropdown-menu(aria-labelledby='loginOrRegister')
+              li
+                = link_to "Login", new_user_session_path, class: "dropdown-item"
+              li
+                = link_to "Register", new_user_registration_path, class: "dropdown-item"

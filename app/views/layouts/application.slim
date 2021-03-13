@@ -1,5 +1,5 @@
 doctype html
-html
+html.h-100
   head
     title Tsundoku
     meta[name="viewport" content="width=device-width,initial-scale=1"]
@@ -7,9 +7,13 @@ html
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
-  body
-    p.notice
-      = notice
-    p.alert
-      = alert
-    = yield
+  body.d-flex.flex-column.h-100
+    = render 'shared/header'
+    main.flex-shrink-0
+      .container
+        p.notice
+          = notice
+        p.alert
+          = alert
+        = yield
+    = render 'shared/footer'
