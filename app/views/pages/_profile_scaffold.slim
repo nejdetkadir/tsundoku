@@ -1,0 +1,34 @@
+.row
+  .col-md-6.text-center
+    img.img-thumbnail(src='https://via.placeholder.com/150' alt='...')
+  .col-md-6
+    h2 #{user.fullname}
+    .d-flex.justify-content-between
+      b @#{user.username}
+      button.btn.btn-primary.btn-sm edit profile
+    p #{user.bio}
+  ul.nav.justify-content-evenly.mt-3.mb-3
+    li.nav-item
+      button.nav-link.card(type='button' data-bs-toggle='modal' data-bs-target='#followersModal') 11 Followers
+    li.nav-item
+      button.nav-link.card(type='button' data-bs-toggle='modal' data-bs-target='#followingModal') 11 Following
+    li.nav-item
+      button.nav-link.card 99 Books
+#followersModal.modal.fade(tabindex='-1' aria-labelledby='followersModalLabel' aria-hidden='true')
+  .modal-dialog.modal-dialog-centered
+    .modal-content
+      .modal-header
+        h5#followersModalLabel.modal-title Followers
+        button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+      .modal-body
+        ul.list-group
+          li.list-group-item An item 1
+#followingModal.modal.fade(tabindex='-1' aria-labelledby='followingModalLabel' aria-hidden='true')
+  .modal-dialog.modal-dialog-centered
+    .modal-content
+      .modal-header
+        h5#followingModalLabel.modal-title Following
+        button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+      .modal-body
+        ul.list-group
+          li.list-group-item An item 2

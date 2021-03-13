@@ -1,0 +1,26 @@
+.row
+  .col-md-12
+    ul#myTab.nav.nav-tabs.justify-content-center(role='tablist')
+      li.nav-item(role='presentation')
+        button#home-tab.nav-link.active(data-bs-toggle='tab' data-bs-target='#home' type='button' role='tab' aria-controls='home' aria-selected='true') Home
+      li.nav-item(role='presentation')
+        button#profile-tab.nav-link(data-bs-toggle='tab' data-bs-target='#profile' type='button' role='tab' aria-controls='profile' aria-selected='false') Profile
+    #myTabContent.tab-content
+      #home.tab-pane.fade.show.active(role='tabpanel' aria-labelledby='home-tab')
+        .row.mt-2
+          .col-md-4.mt-2
+            .card
+              img.card-img-top(src='https://via.placeholder.com/300' alt='...')
+              .card-footer.text-center
+                a.btn.btn-primary.btn-sm(href='#') Go somewhere
+          .col-md-4.mt-2
+            .card
+              img.card-img-top(src='https://via.placeholder.com/300' alt='...')
+              .card-footer.text-center
+                a.btn.btn-primary.btn-sm(href='#') Go somewhere
+          .col-md-4.mt-2
+            .card
+              img.card-img-top(src='https://via.placeholder.com/300' alt='...')
+              .card-footer.text-center
+                a.btn.btn-primary.btn-sm(href='#') Go somewhere
+      #profile.tab-pane.fade(role='tabpanel' aria-labelledby='profile-tab') ...
