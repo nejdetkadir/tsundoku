@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :books, except: [:index]
+  resources :book_comments, only: [:create, :destroy]
   root to: 'pages#welcome'
   devise_for :users
 

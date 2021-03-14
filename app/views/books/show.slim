@@ -18,41 +18,22 @@
       .col-md-12
         hr
         h1.text-center.m-2 Comments
-        .input-group.mb-3
-          input.form-control(type='text' placeholder='Leave a comment' aria-label="Recipient's username" aria-describedby='button-addon2')
-          button#button-addon2.btn.btn-outline-secondary(type='button') Button
+        = simple_form_for @comment, html: { class: "input-group mb-3"} do |f|
+          = render "devise/shared/error_messages", resource: @comment
+          = f.hidden_field :book_id, value: @book.id
+          = f.text_field :comment, class: "form-control", placeholder: "Leave a comment"
+          = f.submit "Share", class: "btn btn-success"
         ul.list-group
-          li.list-group-item
-            .row
-              .col-md-2
-                img.img-fluid(src='https://via.placeholder.com/70x70' alt='')
-              .col-md-10
-                .d-block
-                  h4 Nejdet Kadir Bektaş
-                  small @nejdetkadirr
-              .col-md-12
-                p.text-muted
-                  | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio aperiam eaque animi nulla ullam qui nesciunt deserunt est facilis, laudantium obcaecati odio laborum aspernatur sequi delectus porro tempore vitae atque.
-          li.list-group-item
-          li.list-group-item
-            .row
-              .col-md-2
-                img.img-fluid(src='https://via.placeholder.com/70x70' alt='')
-              .col-md-10
-                .d-block
-                  h4 Nejdet Kadir Bektaş
-                  small @nejdetkadirr
-              .col-md-12
-                p.text-muted
-                  | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio aperiam eaque animi nulla ullam qui nesciunt deserunt est facilis, laudantium obcaecati odio laborum aspernatur sequi delectus porro tempore vitae atque.
-          li.list-group-item
-            .row
-              .col-md-2
-                img.img-fluid(src='https://via.placeholder.com/70x70' alt='')
-              .col-md-10
-                .d-block
-                  h4 Nejdet Kadir Bektaş
-                  small @nejdetkadirr
-              .col-md-12
-                p.text-muted
-                  | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio aperiam eaque animi nulla ullam qui nesciunt deserunt est facilis, laudantium obcaecati odio laborum aspernatur sequi delectus porro tempore vitae atque.
+          - @book.book_comments.each do |comment|
+            li.list-group-item
+              .row
+                .col-md-2
+                  = image_tag(@book.media.variant(:resize => "100x100", :quality => 90), :crop => :fill, class: "img-fluid", alt: @book.user.fullname.to_s)
+                .col-md-10
+                  .d-block
+                    h4 #{comment.user.fullname}
+                    small #{comment.user.username}
+                    - if comment.user == current_user || comment.book.user == current_user
+                      = link_to "Delete", book_comment_path(comment), class: "btn btn-danger btn-sm m-2", data: {:confirm => 'Are you sure?'}, method: :delete
+                .col-md-12
+                  p.text-muted #{comment.comment}
