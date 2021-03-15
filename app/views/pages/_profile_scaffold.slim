@@ -6,6 +6,8 @@
     .d-flex.justify-content-between
       b @#{user.username}
       button.btn.btn-primary.btn-sm edit profile
+    -if user != current_user
+      button.btn.btn-success.btn-sm Follow
     p #{user.bio}
   ul.nav.justify-content-evenly.mt-3.mb-3
     li.nav-item
